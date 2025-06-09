@@ -31,8 +31,10 @@ class BookController extends Controller
     {
         $path_image = '';
         if ($request->hasFile('image')) {
-
-            $path_image = $request->file('image')->store('covers', 'public');
+            $file_name = $request->file('image')->getClientOriginalName();
+            $path_image = $request->file('image')->storeAs('covers', $file_name, 'public');
+            //oppure piu semplicemente
+            //$path_image = $request->file('image')->store('covers', 'public');
         }
 
         Book::create([

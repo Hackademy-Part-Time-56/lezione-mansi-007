@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::table('books', function (Blueprint $table) {
             $table->string('image')
                 ->after('pages')
+                //->default('/images/book-default.png')
                 ->nullable();
         });
     }

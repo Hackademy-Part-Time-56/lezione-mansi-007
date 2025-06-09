@@ -1,32 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+<x-main>
+    <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                @foreach ($books as $book)
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <img class="img-fluid"
+                                src="{{ is_null($book->image) ? '/images/book-default.png' : Storage::url($book->image) }}"
+                                alt="Immagine">
+                            <div class="card-body">
+                                <p class="card-text">{{ $book->name }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    {{-- Stampo i libri
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Test</title>
-</head>
-
-<body>
-    Stampo i libri
-    <ul>
-        @foreach ($books as $book)
-            <li><img height="20"
-                    src="{{ is_null($book->image) ? 'https://platform.text.com/resource-center/text-platform-regex-example.jpg' : Storage::url($book->image) }}"
-                    alt="Immagine">-{{ $book->name }}</li>
-            {{-- <li><img src="{{ $book->image == 'regola' ? Storage::url($book->image) : $book->image }}"
-                    alt="Immagine">-{{ $book->name }}</li> --}}
-        @endforeach
-    </ul>
-    <hr>
     Stampo Autori
     <ul>
         @foreach ($authors as $author)
             <li>{{ $author->firstname . ' ' . $author->lastname }}</li>
         @endforeach
 
-    </ul>
-</body>
-
-</html>
+    </ul> --}}
+</x-main>
