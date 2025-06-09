@@ -24,6 +24,7 @@ class StoreBookRequest extends FormRequest
         return [
             'name' => 'required',
             'pages' => 'required',
+            'image' => 'mimes:jpeg,png,bmp,svg,jpg'
         ];
     }
 

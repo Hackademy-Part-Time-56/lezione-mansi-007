@@ -29,11 +29,17 @@ class BookController extends Controller
 
     public function store(StoreBookRequest $request) //POST
     {
+        $path_image = '';
+        if ($request->hasFile('image')) {
+
+            $path_image = $request->file('image')->store('covers', 'public');
+        }
 
         Book::create([
             'name' => $request->name,
             'pages' => $request->pages,
             'year' =>  $request->year,
+            'image' =>  $path_image
         ]);
         return redirect()->route('index');
     }

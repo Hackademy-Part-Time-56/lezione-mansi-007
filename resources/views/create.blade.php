@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="/salva-libro" method="POST">
+    <form action="/salva-libro" method="POST" enctype="multipart/form-data">
         @csrf
         <div>
             <label>Nome Libro</label>
@@ -28,6 +28,13 @@
         <div>
             <label>Anno di Uscita</label>
             <input type="text" name="year" value="{{ old('year') }}">
+        </div>
+        <div>
+            <label>Copertina</label>
+            <input type="file" name="image" accept="image">
+            @error('image')
+                {{ $message }}
+            @enderror
         </div>
         <button type="submit">Submit</button>
     </form>
