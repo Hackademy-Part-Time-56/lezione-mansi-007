@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBookRequest;
 use App\Models\Author;
 use App\Models\Book;
 use Illuminate\Http\Request;
@@ -20,20 +21,21 @@ class BookController extends Controller
         //return view('welcome', compact('books', 'authors'));
     }
 
-    public function create()
+    public function create() //GET
     {
-        $data = [
-            'name' => 'Otello',
-            'pages' => 456,
-            'year' => 1985,
-        ];
-        Book::create([
-            'name' => $data['name'],
-            'pages' => $data['pages'],
-            'year' => $data['year'],
-        ]);
+        return view('create');
+    }
 
-        dd('libro creato');
+
+    public function store(StoreBookRequest $request) //POST
+    {
+
+        Book::create([
+            'name' => $request->name,
+            'pages' => $request->pages,
+            'year' =>  $request->year,
+        ]);
+        return redirect()->route('index');
     }
 
 
